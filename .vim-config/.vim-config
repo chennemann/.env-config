@@ -1,0 +1,109 @@
+" UI
+
+set ruler
+set laststatus=2
+set encoding=utf-8
+colo delek
+
+
+" Behaviors
+
+set autoread
+set history=768
+
+
+
+" Searching
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+
+
+" Sounds
+
+set noerrorbells
+set novisualbell
+
+
+
+
+" Mappings
+
+let maplocalleader = "\\"
+
+
+
+
+" Regular Mappings
+
+nnoremap ; :
+vnoremap ; :
+
+nnoremap , /
+vnoremap , /
+
+"Make capital Y yank until end of line
+nnoremap Y y$
+
+"Make capital H jump to line start
+nnoremap H ^
+
+"Make capital L jump to line
+nnoremap L $
+
+"Insert line without entering insert mode
+nnoremap go o<ESC>k
+nnoremap gO O<ESC>j
+
+"Make capital U redo
+nnoremap U <C-r>
+
+
+
+
+" Window Movement
+
+nnoremap <silent> gh :WriteBufferIfNecessary<CR>:wincmd h<CR>
+nnoremap <silent> gj :WriteBufferIfNecessary<CR>:wincmd j<CR>
+nnoremap <silent> gk :WriteBufferIfNecessary<CR>:wincmd k<CR>
+nnoremap <silent> gl :WriteBufferIfNecessary<CR>:wincmd l<CR>
+
+
+
+
+" Modifer Mappings
+
+nnoremap <C-j> 15gjzz
+nnoremap <C-k> 15gkzz
+vnoremap <C-j> 15gjzz
+vnoremap <C-k> 15gkzz
+
+
+
+
+" Insert Mode Mappings
+
+inoremap jk <ESC>
+inoremap JK <ESC>
+inoremap Jk <ESC>
+inoremap jK <ESC>
+
+
+
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+
+
+
+" Leader Mappings
+
+" Clear search
+noremap <silent><leader>/ :nohls<CR>
+
+" Highlight word under Cursor
+nnoremap <leader>h *<C-O>

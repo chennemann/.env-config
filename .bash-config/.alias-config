@@ -1,0 +1,137 @@
+#Copyright (C) 2016 Christoph Hennemann
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+
+CLONE="git clone"
+alias clone=$CLONE
+alias cl=$CLONE
+
+STATUS="git fetch && git status"
+alias s=$STATUS
+alias stat=$STATUS
+alias stats=$STATUS
+alias status=$STATUS
+alias statsu=$STATUS
+
+SIMPLE_STATUS="git status"
+alias ss=$SIMPLE_STATUS
+__git_complete ss _git_status
+
+EXIT="exit"
+alias e=$EXIT
+alias ex=$EXIT
+alias exti=$EXIT
+alias exit=$EXIT
+alias eixt=$EXIT
+alias eitx=$EXIT
+
+PULL="git pull"
+alias p=$PULL
+__git_complete p _git_pull
+alias pll=$PULL
+__git_complete pll _git_pull
+alias pull=$PULL
+__git_complete pull _git_pull
+
+PUSH="git push"
+alias psh=$PUSH
+__git_complete psh _git_push
+alias push=$PUSH
+__git_complete push _git_push
+
+PUSH_ORIGIN="git push -u origin"
+alias po=$PUSH_ORIGIN
+__git_complete po _git_push
+alias psho=$PUSH_ORIGIN
+__git_complete psho _git_push
+alias pshorig=$PUSH_ORIGIN
+__git_complete pshorig _git_push
+alias pusho=$PUSH_ORIGIN
+__git_complete pusho _git_push
+alias pushorig=$PUSH_ORIGIN
+__git_complete pushorig _git_push
+alias pushorigin=$PUSH_ORIGIN
+__git_complete pushorigin _git_push
+
+LIST_BRANCH="git branch"
+alias b=$LIST_BRANCH
+alias lbranch=$LIST_BRANCH
+
+CREATE_BRANCH="git checkout -b"
+alias cb=$CREATE_BRANCH
+alias createb=$CREATE_BRANCH
+alias createbranch=$CREATE_BRANCH
+
+RENAME_BRANCH="git branch -m"
+alias rename=$RENAME_BRANCH
+alias renameb=$RENAME_BRANCH
+alias renamebranch=$RENAME_BRANCH
+
+DELETE_BRANCH="git branch -d"
+alias db=$DELETE_BRANCH
+__git_complete db _git_branch
+alias deleteb=$DELETE_BRANCH
+__git_complete deleteb _git_branch
+
+LOG="git log"
+alias dl=$LOG
+alias sl=$LOG
+alias l=$LOG
+alias log=$LOG
+
+ADD="git add"
+alias a=$ADD
+alias add=$ADD
+
+ADD_ALL="git add ."
+alias aa=$ADD_ALL
+alias aall=$ADD_ALL
+alias adda=$ADD_ALL
+alias addall=$ADD_ALL
+
+COMMIT="git commit"
+alias c=$COMMIT
+alias comit=$COMMIT
+alias commit=$COMMIT
+
+COMMIT_WITH_MESSAGE="git commit -m"
+alias cm=$COMMIT_WITH_MESSAGE
+
+ADD_COMMIT="git add . && git commit"
+alias ac=$ADD_COMMIT
+
+ADD_COMMIT_WITH_MESSAGE="git add . && git commit -m"
+alias acm=$ADD_COMMIT_WITH_MESSAGE
+
+CHECKOUT="git checkout"
+alias co=$CHECKOUT
+__git_complete co _git_checkout
+
+MERGE="git merge"
+alias m=$MERGE
+__git_complete m _git_merge
+alias merge=$MERGE
+__git_complete merge _git_merge
+
+REBASE="git rebase"
+alias rb=$REBASE
+__git_complete rebase _git_rebase
+alias rebase=$REBASE
+__git_complete rebase _git_rebase
+
+ASSUME_UNCHANGED="git update-index --assume-unchanged"
+alias ig=$ASSUME_UNCHANGED
+alias ignore=$ASSUME_UNCHANGED
+
+ADB_RESTART="adb kill-server && adb start-server"
+alias ar=$ADB_RESTART

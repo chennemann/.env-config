@@ -1,0 +1,8 @@
+source ~/.vimrc
+
+
+" IDE Actions
+
+nnoremap <Space>vs :source ~/.ideavimrc<CR>
+
+nnoremap <C-f> :action Find<CR>

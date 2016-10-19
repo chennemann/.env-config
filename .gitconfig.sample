@@ -1,0 +1,12 @@
+[user]
+	name = Your Name
+	email = your@e-mail.com
+[core]
+	editor = vim
+	autocrlf = false
+[http]
+	proxy = host:port
+[push]
+	default = simple
+[credential]
+	helper = manager

@@ -1,0 +1,30 @@
+# Ignore Everything
+/*
+
+# Exclude specific files
+
+	# Git configuration
+		!.gitignore
+		!.gitconfig.sample
+		
+		
+	# Bash configuration
+		!.bashrc
+		!.bash_profile
+
+		!/.bash-config/
+		/.bash-config/*
+		!/.bash-config/.alias-config
+
+		
+	# Vim configuration
+		!.ideavimrc
+		!.vimrc
+
+		!/.vim-config/
+		/.vim-config/*
+		!/.vim-config/.vim-config
+
+
+	# Gradle configuration
+		!gradle.properties.sample
