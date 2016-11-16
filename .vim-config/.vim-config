@@ -4,6 +4,8 @@ set ruler
 set laststatus=2
 set encoding=utf-8
 colo delek
+set number
+set relativenumber
 
 
 " Behaviors
