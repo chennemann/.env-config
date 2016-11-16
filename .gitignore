@@ -1,5 +1,6 @@
 # Ignore Everything
 /*
+*
 
 # Exclude specific files
 
@@ -15,6 +16,7 @@
 		!/.bash-config/
 		/.bash-config/*
 		!/.bash-config/.alias-config
+		!.bash-config/.ssh-config
 
 		
 	# Vim configuration
