@@ -73,6 +73,12 @@ __git_complete db _git_branch
 alias deleteb=$DELETE_BRANCH
 __git_complete deleteb _git_branch
 
+FORCE_DELETE_BRANCH="git branch -D"
+alias DB=$FORCE_DELETE_BRANCH
+__git_complete DB _git_branch
+alias dbf=$FORCE_DELETE_BRANCH
+__git_complete dbf _git_branch
+
 CREATE_BRANCH="git checkout -b"
 alias cb=$CREATE_BRANCH
 alias createb=$CREATE_BRANCH
@@ -119,13 +125,29 @@ __git_complete m _git_merge
 alias merge=$MERGE
 __git_complete merge _git_merge
 
+STASH="git stash"
+alias stash=$STASH
+alias stsh=$STASH
+
+STASH_APPLY="git stash apply"
+alias apply=$STASH_APPLY
+alias as=$STASH_APPLY
+
 REBASE="git rebase"
 alias rebase=$REBASE
 __git_complete rebase _git_rebase
+alias r=$REBASE
+__git_complete r _git_rebase
 
 ASSUME_UNCHANGED="git update-index --assume-unchanged"
 alias ig=$ASSUME_UNCHANGED
 alias ignore=$ASSUME_UNCHANGED
+
+scop()
+{
+	git stash && git checkout "$1" && git pull
+}
+export -f scop
 
 ADB_RESTART="adb kill-server && adb start-server"
 alias ar=$ADB_RESTART
