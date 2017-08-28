@@ -27,6 +27,12 @@ alias stats=$STATUS
 alias statsu=$STATUS
 alias status=$STATUS
 
+FETCH="git fetch"
+alias f=$FETCH
+__git_complete f _git_fetch
+alias fetch=$FETCH
+__git_complete fetch _git_fetch
+
 PULL="git pull"
 alias p=$PULL
 __git_complete p _git_pull
