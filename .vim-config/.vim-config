@@ -6,6 +6,9 @@ set encoding=utf-8
 colo delek
 set number
 set relativenumber
+set rnu
+set nu
+set mouse-=a
 
 
 " Behaviors

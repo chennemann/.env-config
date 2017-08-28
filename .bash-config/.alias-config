@@ -125,6 +125,12 @@ alias sl=$LOG
 alias l=$LOG
 alias log=$LOG
 
+DIFF="git diff"
+alias df=$DIFF
+__git_complete df _git_diff
+alias diff=$DIFF
+__git_complete diff _git_diff
+
 MERGE="git merge"
 alias m=$MERGE
 __git_complete m _git_merge
@@ -144,6 +150,10 @@ alias rebase=$REBASE
 __git_complete rebase _git_rebase
 alias r=$REBASE
 __git_complete r _git_rebase
+
+RESET="git reset"
+alias reset=$RESET
+__git_complete reset _git_reset
 
 ASSUME_UNCHANGED="git update-index --assume-unchanged"
 alias ig=$ASSUME_UNCHANGED
@@ -168,3 +178,6 @@ alias exti=$EXIT
 alias exit=$EXIT
 alias eixt=$EXIT
 alias eitx=$EXIT
+
+alias mongo_up="/d/Development/Dericon/vagrant-mongo3/vagrant up"
+alias mongo_halt="/d/Development/Dericon/vagrant-mongo3/vagrant halt"
