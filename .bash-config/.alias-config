@@ -27,7 +27,7 @@ alias stats=$STATUS
 alias statsu=$STATUS
 alias status=$STATUS
 
-FETCH="git fetch"
+FETCH="git fetch --all --prune"
 alias f=$FETCH
 __git_complete f _git_fetch
 alias fetch=$FETCH
@@ -61,7 +61,7 @@ __git_complete pushorig _git_push
 alias pushorigin=$PUSH_ORIGIN
 __git_complete pushorigin _git_push
 
-BRANCH="git branch"
+BRANCH="git branch --all"
 alias b=$BRANCH
 alias branch=$BRANCH
 alias lbranch=$BRANCH
