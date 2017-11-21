@@ -165,6 +165,18 @@ scop()
 }
 export -f scop
 
+# As suggested by https://stackoverflow.com/a/33548037/3867423
+remove-gone()
+{
+	echo 'Removing all local branches that are no longer in remote'
+	git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done
+}
+export -f remove-gone
+alias rmg=remove-gone
+alias rmgone=remove-gone
+alias removegone=remove-gone
+
+
 ADB_RESTART="adb kill-server && adb start-server"
 alias ar=$ADB_RESTART
 
