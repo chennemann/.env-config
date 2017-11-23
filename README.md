@@ -166,6 +166,16 @@ _This command is useful if you don't want to add your changes to the repository 
  - ignore
 ```
 
+#### 'git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done' - Remove all non-remote branches
+_This command is useful for cleaning up a repository with lots of local branches that are no longer in use._
+
+```
+ - rmg
+ - rmgone
+ - removegone
+ - remove-gone
+```
+
 #### 'adb kill-server && adb start-server' - Restarts the adb server
 ```
  - ar
