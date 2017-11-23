@@ -27,7 +27,7 @@ alias stats=$STATUS
 alias statsu=$STATUS
 alias status=$STATUS
 
-FETCH="git fetch --all --prune"
+FETCH="git fetch --all --prune && git branch --all"
 alias f=$FETCH
 __git_complete f _git_fetch
 alias fetch=$FETCH
@@ -164,6 +164,12 @@ scop()
 	git stash && git checkout "$1" && git pull
 }
 export -f scop
+
+acp()
+{
+	git add . && git commit -m "$1" && git fetch && git status && git push
+}
+export -f acp
 
 ADB_RESTART="adb kill-server && adb start-server"
 alias ar=$ADB_RESTART

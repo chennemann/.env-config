@@ -135,6 +135,11 @@ _This shortcut is very useful to compare the local repository with the latest ch
  - acm
 ```
 
+### 'git add . && git commit -m $1 && git push' Add all untracked files and make a new commit with a specified commit-message and push the made commit to the repository
+```
+ - acp
+```
+
 #### 'git log' - Displays the commit log
 ```
  - dl           //  Display Log
