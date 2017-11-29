@@ -145,6 +145,9 @@ STASH_APPLY="git stash apply"
 alias apply=$STASH_APPLY
 alias as=$STASH_APPLY
 
+STASH_PULL_APPLY="git stash && git pull && git stash apply"
+alias spa=$STASH_PULL_APPLY
+
 REBASE="git rebase"
 alias rebase=$REBASE
 __git_complete rebase _git_rebase

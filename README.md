@@ -159,6 +159,23 @@ _This shortcut is very useful to compare the local repository with the latest ch
  - rebase
 ```
 
+#### 'git stash' - Stashes the current modifications
+```
+ - stash
+ - stsh
+```
+
+#### 'git stash apply' - Applies the latest stashed modifications
+```
+ - apply
+ - as
+```
+
+#### 'git stash && git pull && git stash apply' - Stashes the latest modifications, pulls modifications from remote repository, applies the made stash over it.
+```
+ - spa
+```
+
 #### 'git update-index --assume-unchanged [file]'
 _This command is useful if you don't want to add your changes to the repository yet_
 ```
