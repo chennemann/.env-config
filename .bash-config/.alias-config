@@ -201,3 +201,10 @@ alias eitx=$EXIT
 
 alias mongo_up="/d/Development/Dericon/vagrant-mongo3/vagrant up"
 alias mongo_halt="/d/Development/Dericon/vagrant-mongo3/vagrant halt"
+
+mongo() {
+  case $* in
+    start ) net start mongodb;;
+    stop ) net stop mongodb;;
+  esac
+}
