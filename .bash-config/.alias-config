@@ -202,9 +202,12 @@ alias eitx=$EXIT
 alias mongo_up="/d/Development/Dericon/vagrant-mongo3/vagrant up"
 alias mongo_halt="/d/Development/Dericon/vagrant-mongo3/vagrant halt"
 
+# Mongo as a Service: https://stackoverflow.com/a/46188851/3225089
+# Set rights to execute mongo Service: https://stackoverflow.com/a/4447220/3225089
 mongo() {
   case $* in
     start ) net start mongodb;;
     stop ) net stop mongodb;;
+    * ) net start mongodb;;
   esac
 }
