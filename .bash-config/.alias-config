@@ -199,8 +199,8 @@ alias exit=$EXIT
 alias eixt=$EXIT
 alias eitx=$EXIT
 
-alias mongo_up="/d/Development/Dericon/vagrant-mongo3/vagrant up"
-alias mongo_halt="/d/Development/Dericon/vagrant-mongo3/vagrant halt"
+REFRESH="source ~/.bashrc"
+alias refresh=$REFRESH
 
 # Mongo as a Service: https://stackoverflow.com/a/46188851/3225089
 # Set rights to execute mongo Service: https://stackoverflow.com/a/4447220/3225089
@@ -211,3 +211,62 @@ mongo() {
     * ) net start mongodb;;
   esac
 }
+
+
+change() {
+	case "$1" in
+		discovery)
+			cd /d/Development/Projekte/page-builder/discovery/
+			;;
+		configuration)
+			cd /d/Development/Projekte/page-builder/configuration/
+			;;
+		administration)
+			cd /d/Development/Projekte/page-builder/administration/
+			;;
+	esac
+}
+export -f change
+
+
+build() {
+	case "$1" in
+		discovery)
+			bash /d/Development/Projekte/page-builder/discovery/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/discovery/
+			;;
+		configuration)
+			bash /d/Development/Projekte/page-builder/configuration/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/configuration/ 
+			;;
+		administration)
+			bash /d/Development/Projekte/page-builder/administration/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/administration/ 
+			;;
+		authorization)
+			bash /d/Development/Projekte/page-builder/authorization/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/authorization/ 
+			;;
+	esac
+}
+export -f build
+
+
+start() {
+	case "$1" in
+		mongo) net start mongodb;;
+		discovery)
+			java -jar /d/Development/Projekte/page-builder/discovery/.build/artifacts/*.jar
+			;;
+		configuration)
+			java -jar /d/Development/Projekte/page-builder/configuration/.build/artifacts/*.jar
+			;;
+		administration)
+			java -jar /d/Development/Projekte/page-builder/administration/.build/artifacts/*.jar
+			;;
+	esac
+}
+export -f start
+
+stop() {
+	case "$1" in
+		mongo) net stop mongodb;;
+	esac
+}
+export -f start
