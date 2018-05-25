@@ -85,7 +85,13 @@ __git_complete DB _git_branch
 alias dbf=$FORCE_DELETE_BRANCH
 __git_complete dbf _git_branch
 
-CREATE_BRANCH="git checkout -b"
+cbp()
+{
+	git checkout -b $1 && git push -u origin $1 && git fetch && git status
+}
+export -f cbp
+
+CREATE_BRANCH="cbp"
 alias cb=$CREATE_BRANCH
 alias createb=$CREATE_BRANCH
 alias createbranch=$CREATE_BRANCH
