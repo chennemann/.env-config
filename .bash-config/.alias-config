@@ -87,7 +87,7 @@ __git_complete dbf _git_branch
 
 cbp()
 {
-	git checkout -b $1 && git push -u origin $1 && git fetch && git status
+	git checkout -b $1 && git push -u origin $1 && git status
 }
 export -f cbp
 
