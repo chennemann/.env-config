@@ -27,7 +27,7 @@ alias stats=$STATUS
 alias statsu=$STATUS
 alias status=$STATUS
 
-FETCH="git fetch --all --prune"
+FETCH="git fetch --all --prune && git branch --all"
 alias f=$FETCH
 __git_complete f _git_fetch
 alias fetch=$FETCH
@@ -85,7 +85,13 @@ __git_complete DB _git_branch
 alias dbf=$FORCE_DELETE_BRANCH
 __git_complete dbf _git_branch
 
-CREATE_BRANCH="git checkout -b"
+cbp()
+{
+	git checkout -b $1 && git push -u origin $1 && git status
+}
+export -f cbp
+
+CREATE_BRANCH="cbp"
 alias cb=$CREATE_BRANCH
 alias createb=$CREATE_BRANCH
 alias createbranch=$CREATE_BRANCH
@@ -145,6 +151,9 @@ STASH_APPLY="git stash apply"
 alias apply=$STASH_APPLY
 alias as=$STASH_APPLY
 
+STASH_PULL_APPLY="git stash && git pull && git stash apply"
+alias spa=$STASH_PULL_APPLY
+
 REBASE="git rebase"
 alias rebase=$REBASE
 __git_complete rebase _git_rebase
@@ -165,6 +174,23 @@ scop()
 }
 export -f scop
 
+acp()
+{
+	git add . && git commit -m "$1" && git fetch && git status && git push
+}
+export -f acp
+
+# As suggested by https://stackoverflow.com/a/33548037/3867423
+remove-gone()
+{
+	echo 'Removing all local branches that are no longer in remote'
+	git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done && git branch --all
+}
+export -f remove-gone
+alias rmg=remove-gone
+alias rmgone=remove-gone
+alias removegone=remove-gone
+
 ADB_RESTART="adb kill-server && adb start-server"
 alias ar=$ADB_RESTART
 
@@ -179,5 +205,74 @@ alias exit=$EXIT
 alias eixt=$EXIT
 alias eitx=$EXIT
 
-alias mongo_up="/d/Development/Dericon/vagrant-mongo3/vagrant up"
-alias mongo_halt="/d/Development/Dericon/vagrant-mongo3/vagrant halt"
+REFRESH="source ~/.bashrc"
+alias refresh=$REFRESH
+
+# Mongo as a Service: https://stackoverflow.com/a/46188851/3225089
+# Set rights to execute mongo Service: https://stackoverflow.com/a/4447220/3225089
+mongo() {
+  case $* in
+    start ) net start mongodb;;
+    stop ) net stop mongodb;;
+    * ) net start mongodb;;
+  esac
+}
+
+
+change() {
+	case "$1" in
+		discovery)
+			cd /d/Development/Projekte/page-builder/discovery/
+			;;
+		configuration)
+			cd /d/Development/Projekte/page-builder/configuration/
+			;;
+		administration)
+			cd /d/Development/Projekte/page-builder/administration/
+			;;
+	esac
+}
+export -f change
+
+
+build() {
+	case "$1" in
+		discovery)
+			bash /d/Development/Projekte/page-builder/discovery/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/discovery/
+			;;
+		configuration)
+			bash /d/Development/Projekte/page-builder/configuration/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/configuration/ 
+			;;
+		administration)
+			bash /d/Development/Projekte/page-builder/administration/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/administration/ 
+			;;
+		authorization)
+			bash /d/Development/Projekte/page-builder/authorization/gradlew :application:bootJar -p /d/Development/Projekte/page-builder/authorization/ 
+			;;
+	esac
+}
+export -f build
+
+
+start() {
+	case "$1" in
+		mongo) net start mongodb;;
+		discovery)
+			java -jar /d/Development/Projekte/page-builder/discovery/.build/artifacts/*.jar
+			;;
+		configuration)
+			java -jar /d/Development/Projekte/page-builder/configuration/.build/artifacts/*.jar
+			;;
+		administration)
+			java -jar /d/Development/Projekte/page-builder/administration/.build/artifacts/*.jar
+			;;
+	esac
+}
+export -f start
+
+stop() {
+	case "$1" in
+		mongo) net stop mongodb;;
+	esac
+}
+export -f start

@@ -1,5 +1,7 @@
 # Include external bash configuration
 
+# Git Autocompletion
+. $HOME/.git-completion.bash
 
 # Git Aliases
 . $HOME/.bash-config/.alias-config

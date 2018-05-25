@@ -135,6 +135,11 @@ _This shortcut is very useful to compare the local repository with the latest ch
  - acm
 ```
 
+### 'git add . && git commit -m $1 && git push' Add all untracked files and make a new commit with a specified commit-message and push the made commit to the repository
+```
+ - acp
+```
+
 #### 'git log' - Displays the commit log
 ```
  - dl           //  Display Log
@@ -154,11 +159,38 @@ _This shortcut is very useful to compare the local repository with the latest ch
  - rebase
 ```
 
+#### 'git stash' - Stashes the current modifications
+```
+ - stash
+ - stsh
+```
+
+#### 'git stash apply' - Applies the latest stashed modifications
+```
+ - apply
+ - as
+```
+
+#### 'git stash && git pull && git stash apply' - Stashes the latest modifications, pulls modifications from remote repository, applies the made stash over it.
+```
+ - spa
+```
+
 #### 'git update-index --assume-unchanged [file]'
 _This command is useful if you don't want to add your changes to the repository yet_
 ```
  - ig
  - ignore
+```
+
+#### 'git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done' - Remove all non-remote branches
+_This command is useful for cleaning up a repository with lots of local branches that are no longer in use._
+
+```
+ - rmg
+ - rmgone
+ - removegone
+ - remove-gone
 ```
 
 #### 'adb kill-server && adb start-server' - Restarts the adb server
