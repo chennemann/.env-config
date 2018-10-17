@@ -5,6 +5,7 @@
 
 # Git Aliases
 . $HOME/.bash-config/.alias-config
+. $HOME/.bash-config/.local-alias-config
 
 # SSH Configuration
 . $HOME/.bash-config/.ssh-config
