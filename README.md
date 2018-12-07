@@ -176,6 +176,18 @@ _This shortcut is very useful to compare the local repository with the latest ch
  - spa
 ```
 
+#### `git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"`
+_Work in progress, allows to pause a branch development and switch to another._
+```
+ - gwip
+```
+
+#### `git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1`
+_When going back to work at that branch, just unwip._
+```
+ - gunwip
+```
+
 #### 'git update-index --assume-unchanged [file]'
 _This command is useful if you don't want to add your changes to the repository yet_
 ```
