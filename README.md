@@ -225,6 +225,19 @@ _This command is useful for cleaning up a repository with lots of local branches
  - remove-gone
 ```
 
+
+#### './gradlew clean' - execute the clean task of the gradle wrapper in the current directory
+```
+ - clean
+
+```
+
+#### './gradlew build' - execute the build task of the gradle wrapper in the current directory
+```
+ - build
+
+```
+
 #### 'exit' - Closes the current Terminal
 ```
  - e
