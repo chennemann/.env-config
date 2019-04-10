@@ -241,7 +241,7 @@ alias refresh=$REFRESH
 
 
 BUILD="./gradlew build"
-alias build=BUILD
+alias build=$BUILD
 
 CLEAN="./gradlew clean"
-alias clean=CLEAN
+alias clean=$CLEAN
