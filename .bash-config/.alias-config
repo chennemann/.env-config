@@ -245,3 +245,13 @@ alias build=$BUILD
 
 CLEAN="./gradlew clean"
 alias clean=$CLEAN
+
+RUN="./gradlew"
+alias run=$RUN
+
+
+ALIASES="code ~/.bash-config/.alias-config"
+alias aka=$ALIASES
+
+LOCAL_ALIASES="code ~/.bash-config/.local-alias-config"
+alias laka=$LOCAL_ALIASES
