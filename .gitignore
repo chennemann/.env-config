@@ -1,32 +1,37 @@
 # Ignore Everything
 /*
-*
-
-# Exclude specific files
-
-	# Git configuration
-		!.gitignore
-		!.gitconfig.sample
-		
-		
-	# Bash configuration
-		!.bashrc
-		!.bash_profile
-
-		!/.bash-config/
-		/.bash-config/*
-		!/.bash-config/.alias-config
-		!.bash-config/.ssh-config
-
-		
-	# Vim configuration
-		!.ideavimrc
-		!.vimrc
-
-		!/.vim-config/
-		/.vim-config/*
-		!/.vim-config/.vim-config
 
 
-	# Gradle configuration
-		!gradle.properties.sample
+# Git configuration
+!.gitignore
+!.gitconfig.sample
+!.git-completion.bash
+
+
+# Bash configuration
+!.bashrc
+!.bash_profile
+
+!/.bash-config/
+/.bash-config/*
+!/.bash-config/.alias-config
+!/.bash-config/.local-alias-config
+!.bash-config/.ssh-config
+
+
+# Vim configuration
+!.ideavimrc
+!.vimrc
+
+!/.vim-config/
+/.vim-config/*
+!/.vim-config/.vim-config
+
+
+# Gradle configuration
+!gradle.properties.sample
+
+
+# Additional files
+!README.md
+!LICENSE
