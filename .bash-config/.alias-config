@@ -201,7 +201,7 @@ alias spa=$STASH_PULL_APPLY
 TAGS="git tag --list"
 alias tags=$TAGS
 
-LATEST_TAG="git describe --tags $(git rev-list --tags --max-count=1)"
+LATEST_TAG="git describe --tags \$(git rev-list --tags --max-count=1)"
 alias tag=$LATEST_TAG
 
 
