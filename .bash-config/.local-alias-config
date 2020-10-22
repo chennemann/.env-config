@@ -1,0 +1,36 @@
+alias adb-connect="adb connect 192.168.0.200:5555"
+
+alias project="/d/development/dericon/reference-architecture/project.sh -u christoph.hennemann@dericon.de -p 9b852aaad643f7e66884558fecba35c7809f19e22becee363b59c00551c88a4f -d /d/development/dericon -h work.bitbucket.org"
+
+jenkins() {
+
+   /usr/bin/mintty.exe -t 'Build Jenkins' -w min -e '/d/development/dericon/cd-helpers/tools/build-jenkins/establish_ssh_tunnel_build_jenkins.sh' & > /dev/null
+
+}
+
+rundeck-cron() {
+
+   /usr/bin/mintty.exe -t 'Cron Rundeck' -w min -e '/d/development/dericon/cd-helpers/tools/rundeck/establish_ssh_tunnel_rundeck_cron.sh' & > /dev/null
+
+}
+
+rundeck() {
+
+   /usr/bin/mintty.exe -t 'Deployment Rundeck' -w min -e '/d/development/dericon/cd-helpers/tools/rundeck/establish_ssh_tunnel_rundeck_deployment.sh' & > /dev/null
+
+}
+
+# Connect to Eureka
+connect() {
+   eureka-ssh-client-win.exe -e test -a $1
+}
+
+# Connect to Eureka
+connect-prod() {
+   eureka-ssh-client-win.exe -e prod -a $1
+}
+
+function dericlone() {
+    git clone git@work.bitbucket.org:dericon/$1.git
+    cd $1 && git config user.email christoph.hennemann@dericon.de
+}

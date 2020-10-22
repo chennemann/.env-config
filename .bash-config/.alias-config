@@ -103,6 +103,13 @@ cbp()
 }
 export -f cbp
 
+mdev()
+{
+	x=$(git rev-parse --abbrev-ref HEAD)
+	echo "merge develop into $x"
+	git checkout develop && git pull && git checkout $x && git merge develop
+}
+
 CREATE_BRANCH="cbp"
 alias cb=$CREATE_BRANCH
 alias createb=$CREATE_BRANCH
