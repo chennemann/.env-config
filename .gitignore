@@ -15,7 +15,6 @@
 !/.bash-config/
 /.bash-config/*
 !/.bash-config/.alias-config
-!/.bash-config/.local-alias-config
 !.bash-config/.ssh-config
 
 
