@@ -1,1 +1,1 @@
-source ~/.vim-config/.vim-config
+source ~/.bash-config/.vim-config

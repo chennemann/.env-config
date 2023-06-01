@@ -1,0 +1,13 @@
+# To override all or some values you should create a '.defaults' file next to this one and override the values you want.
+# Restart git-bash to see the effects
+
+DEFAULT_EDITOR_COMMAND="vim"
+DEFAULT_IDE_COMMAND="vim"
+
+DEFAULT_TERMINAL_TITLE="$TITLEPREFIX:$PWD"
+DEFAULT_PROMPT_HOST_SECTION="\u@\h"
+DEFAULT_PROMPT_SYSTEM_SECTION="$MSYSTEM"
+DEFAULT_PROMPT_INDICATOR="$"
+
+ENABLE_SSH_AGENT_SPAWNING=true
+DEFAULT_SSH_KEY_DIRECTORY="${HOME}/.ssh/identities"
