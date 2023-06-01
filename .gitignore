@@ -15,20 +15,27 @@
 !/.bash-config/
 /.bash-config/*
 !/.bash-config/.alias-config
-!.bash-config/.ssh-config
+!/.bash-config/.config-extensions
+!/.bash-config/.defaults.template
+!/.bash-config/.ssh-config
+!/.bash-config/.vim-config
+
+
+# Git Bash Prompt
+!/.config/
+/.config/*
+!/.config/git/
+/.config/git/**
+!/.config/git/git-prompt.sh
 
 
 # Vim configuration
 !.ideavimrc
 !.vimrc
 
-!/.vim-config/
-/.vim-config/*
-!/.vim-config/.vim-config
 
-
-# Gradle configuration
-!gradle.properties.sample
+# Additional Tools
+!/.tools/
 
 
 # Additional files

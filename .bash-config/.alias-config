@@ -13,111 +13,106 @@
 #limitations under the License.
 
 
-CLONE="git clone"
-alias cl=$CLONE
-alias clone=$CLONE
-
-
-SIMPLE_STATUS="git status"
-alias ss=$SIMPLE_STATUS
+AC_SIMPLE_STATUS="git status"
+alias ss=$AC_SIMPLE_STATUS
 __git_complete ss _git_status
 
 
-STATUS="git fetch && git status"
-alias s=$STATUS
-alias stat=$STATUS
-alias stats=$STATUS
-alias statsu=$STATUS
-alias status=$STATUS
+AC_STATUS="git fetch && git status"
+alias s=$AC_STATUS
+alias stat=$AC_STATUS
+alias stats=$AC_STATUS
+alias statsu=$AC_STATUS
+alias status=$AC_STATUS
 
 
-FETCH="git fetch --all --prune && git branch --all"
-alias f=$FETCH
+AC_FETCH="git fetch --all --prune && git branch --all"
+alias f=$AC_FETCH
 __git_complete f _git_fetch
-alias fetch=$FETCH
+alias fetch=$AC_FETCH
 __git_complete fetch _git_fetch
 
 
-PULL="git pull"
-alias p=$PULL
+AC_PULL="git pull"
+alias p=$AC_PULL
 __git_complete p _git_pull
-alias pll=$PULL
+alias pll=$AC_PULL
 __git_complete pll _git_pull
-alias pull=$PULL
+alias pull=$AC_PULL
 __git_complete pull _git_pull
 
 
-PUSH="git push"
-alias psh=$PUSH
+AC_PUSH="git push"
+alias psh=$AC_PUSH
 __git_complete psh _git_push
-alias push=$PUSH
+alias push=$AC_PUSH
 __git_complete push _git_push
 
 
-PUSH_ORIGIN="git push -u origin"
-alias po=$PUSH_ORIGIN
+AC_PUSH_ORIGIN="git push -u origin"
+alias po=$AC_PUSH_ORIGIN
 __git_complete po _git_push
-alias psho=$PUSH_ORIGIN
+alias psho=$AC_PUSH_ORIGIN
 __git_complete psho _git_push
-alias pshorig=$PUSH_ORIGIN
+alias pshorig=$AC_PUSH_ORIGIN
 __git_complete pshorig _git_push
-alias pusho=$PUSH_ORIGIN
+alias pusho=$AC_PUSH_ORIGIN
 __git_complete pusho _git_push
-alias pushorig=$PUSH_ORIGIN
+alias pushorig=$AC_PUSH_ORIGIN
 __git_complete pushorig _git_push
-alias pushorigin=$PUSH_ORIGIN
+alias pushorigin=$AC_PUSH_ORIGIN
 __git_complete pushorigin _git_push
 
 
-BRANCH="git branch --all"
-alias b=$BRANCH
-alias branch=$BRANCH
-alias lbranch=$BRANCH
+AC_BRANCH="git branch --all"
+alias b=$AC_BRANCH
+alias branch=$AC_BRANCH
+alias lbranch=$AC_BRANCH
 
 
-RENAME_BRANCH="git branch -m"
-alias rb=$RENAME_BRANCH
-alias rename=$RENAME_BRANCH
-alias renameb=$RENAME_BRANCH
-alias renamebranch=$RENAME_BRANCH
-alias rename_branch=$RENAME_BRANCH
+AC_RENAME_BRANCH="git branch -m"
+alias rb=$AC_RENAME_BRANCH
+alias rename=$AC_RENAME_BRANCH
+alias renameb=$AC_RENAME_BRANCH
+alias renamebranch=$AC_RENAME_BRANCH
+alias rename_branch=$AC_RENAME_BRANCH
 
 
-DELETE_BRANCH="git branch -d"
-alias db=$DELETE_BRANCH
+AC_DELETE_BRANCH="git branch -d"
+alias db=$AC_DELETE_BRANCH
 __git_complete db _git_branch
-alias deleteb=$DELETE_BRANCH
+alias deleteb=$AC_DELETE_BRANCH
 __git_complete deleteb _git_branch
 
 
-FORCE_DELETE_BRANCH="git branch -D"
-alias DB=$FORCE_DELETE_BRANCH
+AC_FORCE_DELETE_BRANCH="git branch -D"
+alias DB=$AC_FORCE_DELETE_BRANCH
 __git_complete DB _git_branch
-alias dbf=$FORCE_DELETE_BRANCH
+alias dbf=$AC_FORCE_DELETE_BRANCH
 __git_complete dbf _git_branch
 
 
 cbp()
 {
-	git checkout -b $1 && git push -u origin $1 && git status
+	git checkout -b $1 && git push -u origin $1
 }
 export -f cbp
 
+AC_CREATE_BRANCH="cbp"
+alias cb=$AC_CREATE_BRANCH
+alias createb=$AC_CREATE_BRANCH
+alias createbranch=$AC_CREATE_BRANCH
+
 mdev()
 {
-	x=$(git rev-parse --abbrev-ref HEAD)
+	local x=$(git rev-parse --abbrev-ref HEAD)
 	echo "merge develop into $x"
 	git checkout develop && git pull && git checkout $x && git merge develop
 }
 
-CREATE_BRANCH="cbp"
-alias cb=$CREATE_BRANCH
-alias createb=$CREATE_BRANCH
-alias createbranch=$CREATE_BRANCH
 
-
-CHECKOUT="git checkout"
-alias co=$CHECKOUT
+AC_CHECKOUT="git checkout"
+alias co=$AC_CHECKOUT
 __git_complete co _git_checkout
 
 
@@ -125,35 +120,35 @@ alias com="git checkout master"
 alias cod="git checkout develop"
 
 
-ADD="git add"
-alias a=$ADD
-alias add=$ADD
+AC_ADD="git add"
+alias a=$AC_ADD
+alias add=$AC_ADD
 
 
-ADD_ALL="git add ."
-alias aa=$ADD_ALL
-alias aall=$ADD_ALL
-alias adda=$ADD_ALL
-alias addall=$ADD_ALL
-alias add_all=$ADD_ALL
+AC_ADD_ALL="git add ."
+alias aa=$AC_ADD_ALL
+alias aall=$AC_ADD_ALL
+alias adda=$AC_ADD_ALL
+alias addall=$AC_ADD_ALL
+alias add_all=$AC_ADD_ALL
 
 
-COMMIT="git commit"
-alias c=$COMMIT
-alias comit=$COMMIT
-alias commit=$COMMIT
+AC_COMMIT="git commit"
+alias c=$AC_COMMIT
+alias comit=$AC_COMMIT
+alias commit=$AC_COMMIT
 
 
-COMMIT_WITH_MESSAGE="git commit -m"
-alias cm=$COMMIT_WITH_MESSAGE
+AC_COMMIT_WITH_MESSAGE="git commit -m"
+alias cm=$AC_COMMIT_WITH_MESSAGE
 
 
-ADD_COMMIT="git add . && git commit"
-alias ac=$ADD_COMMIT
+AC_ADD_COMMIT="git add . && git commit"
+alias ac=$AC_ADD_COMMIT
 
 
-ADD_COMMIT_WITH_MESSAGE="git add . && git commit -m"
-alias acm=$ADD_COMMIT_WITH_MESSAGE
+AC_ADD_COMMIT_WITH_MESSAGE="git add . && git commit -m"
+alias acm=$AC_ADD_COMMIT_WITH_MESSAGE
 
 
 acp()
@@ -163,70 +158,68 @@ acp()
 export -f acp
 
 
-LOG="git log"
-alias dl=$LOG
-alias sl=$LOG
-alias l=$LOG
-alias log=$LOG
+AC_LOG="git log"
+alias dl=$AC_LOG
+alias sl=$AC_LOG
+alias l=$AC_LOG
+alias log=$AC_LOG
 
 
-DIFF="git diff"
-alias df=$DIFF
+AC_DIFF="git diff"
+alias df=$AC_DIFF
 __git_complete df _git_diff
-alias diff=$DIFF
+alias diff=$AC_DIFF
 __git_complete diff _git_diff
 
 
-MERGE="git merge"
-alias m=$MERGE
+AC_MERGE="git merge"
+alias m=$AC_MERGE
 __git_complete m _git_merge
-alias merge=$MERGE
+alias merge=$AC_MERGE
 __git_complete merge _git_merge
 
 
-REBASE="git rebase"
-alias rebase=$REBASE
+AC_REBASE="git rebase"
+alias rebase=$AC_REBASE
 __git_complete rebase _git_rebase
-alias r=$REBASE
+alias r=$AC_REBASE
 __git_complete r _git_rebase
 
 
-STASH="git stash"
-alias stash=$STASH
-alias stsh=$STASH
+AC_STASH="git stash"
+alias stash=$AC_STASH
+alias stsh=$AC_STASH
 
 
-STASH_APPLY="git stash apply"
-alias apply=$STASH_APPLY
-alias as=$STASH_APPLY
+AC_STASH_APPLY="git stash apply"
+alias apply=$AC_STASH_APPLY
+alias as=$AC_STASH_APPLY
 
 
-STASH_PULL_APPLY="git stash && git pull && git stash apply"
-alias spa=$STASH_PULL_APPLY
+AC_STASH_PULL_APPLY="git stash && git pull && git stash apply"
+alias spa=$AC_STASH_PULL_APPLY
 
 
-TAGS="git tag --list"
-alias tags=$TAGS
+AC_TAGS="git tag --list"
+alias tags=$AC_TAGS
 
-LATEST_TAG="git pull -q --all && git describe --tags `git rev-list --tags --max-count=1`"
-alias tag=$LATEST_TAG
+latest-tag()
+{
+	git pull -q --all && git describe --tags $(git rev-list --tags --max-count=1)
+}
+export -f latest-tag
+alias tag=latest-tag
+alias latest=latest-tag
 
 
-RESET="git reset"
-alias reset=$RESET
+AC_RESET="git reset"
+alias reset=$AC_RESET
 __git_complete reset _git_reset
 
 
-ASSUME_UNCHANGED="git update-index --assume-unchanged"
-alias ig=$ASSUME_UNCHANGED
-alias ignore=$ASSUME_UNCHANGED
-
-
-scop()
-{
-	git stash && git checkout "$1" && git pull
-}
-export -f scop
+AC_ASSUME_UNCHANGED="git update-index --assume-unchanged"
+alias ig=$AC_ASSUME_UNCHANGED
+alias ignore=$AC_ASSUME_UNCHANGED
 
 
 # As suggested by https://stackoverflow.com/a/33548037/3867423
@@ -241,43 +234,39 @@ alias rmgone=remove-gone
 alias removegone=remove-gone
 
 
-EXIT="exit"
-alias e=$EXIT
-alias ex=$EXIT
-alias exti=$EXIT
-alias exit=$EXIT
-alias eixt=$EXIT
-alias eitx=$EXIT
+AC_EXIT="exit"
+alias e=$AC_EXIT
+alias ex=$AC_EXIT
+alias exti=$AC_EXIT
+alias exit=$AC_EXIT
+alias eixt=$AC_EXIT
+alias eitx=$AC_EXIT
 
 
-REFRESH="source ~/.bashrc"
-alias refresh=$REFRESH
+AC_REFRESH="source ~/.bashrc"
+alias refresh=$AC_REFRESH
 
 
-BUILD="./gradlew build"
-alias build=$BUILD
+AC_BUILD="./gradlew build"
+alias build=$AC_BUILD
 
-CLEAN="./gradlew clean"
-alias clean=$CLEAN
+AC_CLEAN="./gradlew clean"
+alias clean=$AC_CLEAN
 
-RUN="./gradlew"
-alias run=$RUN
+AC_RUN="./gradlew"
+alias run=$AC_RUN
 
-settitle () {
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-  echo -ne '\033]0;'"$1"'\a'
-}
+alias editor=$DEFAULT_EDITOR_COMMAND
+alias ide="$DEFAULT_IDE_COMMAND ."
+alias code="$DEFAULT_IDE_COMMAND ."
 
-ut () {
-   directory=${PWD##*/}
-   settitle $directory
-}
+AC_ALIASES="$DEFAULT_EDITOR_COMMAND ~/.bash-config/.alias-config"
+alias aka=$AC_ALIASES
 
-alias t=settitle
-alias title=settitle
+AC_LOCAL_ALIASES="$DEFAULT_EDITOR_COMMAND ~/.bash-config/.local-alias-config"
+alias laka=$AC_LOCAL_ALIASES
 
-ALIASES="code ~/.bash-config/.alias-config"
-alias aka=$ALIASES
+AC_UP="cd .."
+alias up=$AC_UP
 
-LOCAL_ALIASES="code ~/.bash-config/.local-alias-config"
-alias laka=$LOCAL_ALIASES
+alias home="cd ~"

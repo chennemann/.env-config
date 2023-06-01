@@ -1,0 +1,18 @@
+load-extensions() {
+    local CONFIG_EXTENSIONS_PATH=${HOME}/.bash-config/extensions
+
+    shopt -s dotglob
+    if [ -d "${CONFIG_EXTENSIONS_PATH}" ]; then
+        for extension in ${CONFIG_EXTENSIONS_PATH}/*; do
+            if [ -f "$extension" ]; then
+                 local dirname=$extension
+                 local extensionName="${dirname%"${dirname##*[!/]}"}"
+                 extensionName="${extensionName##*/}"
+                 extensionName=${extensionName:-/}
+                . $extension
+            fi
+        done
+    fi
+    shopt -u dotglob
+}
+load-extensions

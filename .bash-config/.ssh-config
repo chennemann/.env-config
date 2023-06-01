@@ -1,16 +1,14 @@
 SSH_ENV="$HOME/.ssh/environment"
-echo "Initialize ssh environment from $SSH_ENV"
 
 # start the ssh-agent
 function start_agent {
   echo "Initializing new SSH agent..."
   # spawn ssh-agent
   ssh-agent | sed 's/^echo/#echo/' > "$SSH_ENV"
-  echo succeeded
   chmod 600 "$SSH_ENV"
   . "$SSH_ENV" > /dev/null
 
-  for possiblekey in ${HOME}/.ssh/identities/id_*; do
+  for possiblekey in ${DEFAULT_SSH_KEY_DIRECTORY}/id_*; do
     if grep -q PRIVATE "$possiblekey"; then
         ssh-add "$possiblekey"
     fi
@@ -21,7 +19,6 @@ function start_agent {
 # test for identities
 function test_identities {
   # test whether standard identities have been added to the agent already
-  echo "check existing identities"
   ssh-add -l | grep "The agent has no identities" > /dev/null
   if [ $? -eq 0 ]; then
     ssh-add
@@ -51,10 +48,10 @@ else
     ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
     if [ $? -eq 0 ]; then
       test_identities
+    else
+      start_agent
     fi
   else
     start_agent
   fi
 fi
-
-echo "ssh-agent pid $SSH_AGENT_PID"
