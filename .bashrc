@@ -1,16 +1,18 @@
 # Include external bash configuration
 
 # Load Defaults
-LOCAL_DEFAULTS_FILE_PATH=$HOME/.bash-config/.defaults
-if test -f ${LOCAL_DEFAULTS_FILE_PATH}.template
+DEFAULTS_TEMPLATE=$HOME/.bash-config/.defaults.template
+if test -f ${DEFAULTS_TEMPLATE}
 then
-	. ${LOCAL_DEFAULTS_FILE_PATH}.template
+	. ${DEFAULTS_TEMPLATE}
 fi
 
 ## Override with user defaults if they exist
-if test -f $LOCAL_DEFAULTS_FILE_PATH
-then
+LOCAL_DEFAULTS_FILE_PATH=$HOME/.bash-config/.defaults
+if test -f $LOCAL_DEFAULTS_FILE_PATH; then
 	. $LOCAL_DEFAULTS_FILE_PATH
+else
+    cp $DEFAULTS_TEMPLATE $LOCAL_DEFAULTS_FILE_PATH
 fi
 
 debug-log() {
@@ -18,6 +20,15 @@ debug-log() {
         echo $@
     fi
 }
+
+toggle-logging() {
+    if [ "$ENABLE_DEBUG_LOGGING" = true ]; then
+        sed -i 's/ENABLE_DEBUG_LOGGING=true/ENABLE_DEBUG_LOGGING=false/' $LOCAL_DEFAULTS_FILE_PATH
+    else
+        sed -i 's/ENABLE_DEBUG_LOGGING=false/ENABLE_DEBUG_LOGGING=true/' $LOCAL_DEFAULTS_FILE_PATH
+    fi
+}
+
 debug-log ""
 debug-log "Initialize Bash Environment"
 
@@ -55,4 +66,4 @@ PROMPT_COMMAND='history -n'
 
 debug-log ""
 debug-log ""
-debug-log "!!! Logging is Enabled < Edit your .defaults file to disable !!!"
+debug-log "!!! Logging is Enabled < Call 'toggle-logging' to disable !!!"
