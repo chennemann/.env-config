@@ -3,12 +3,14 @@ load-extensions() {
 
     shopt -s dotglob
     if [ -d "${CONFIG_EXTENSIONS_PATH}" ]; then
+        debug-log "Load Custom Extensions:"
         for extension in ${CONFIG_EXTENSIONS_PATH}/*; do
-            if [ -f "$extension" ]; then
+            if [ -f "$extension" ] && [[ ! "${extension}" == *".gitignore" ]]; then
                  local dirname=$extension
                  local extensionName="${dirname%"${dirname##*[!/]}"}"
                  extensionName="${extensionName##*/}"
                  extensionName=${extensionName:-/}
+                debug-log "‎ -> $extensionName"
                 . $extension
             fi
         done
