@@ -1,6 +1,8 @@
 # To override all or some values you should create a '.defaults' file next to this one and override the values you want.
 # Restart git-bash to see the effects
 
+ENABLE_DEBUG_LOGGING=false
+
 DEFAULT_EDITOR_COMMAND="vim"
 DEFAULT_IDE_COMMAND="vim"
 

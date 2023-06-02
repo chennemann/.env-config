@@ -1,5 +1,7 @@
 SSH_ENV="$HOME/.ssh/environment"
 
+debug-log "Load SSH Configuration"
+
 # start the ssh-agent
 function start_agent {
   echo "Initializing new SSH agent..."
@@ -27,6 +29,12 @@ function test_identities {
       start_agent
     fi
   fi
+
+    debug-log "‎ -> Registered keys:"
+    if [ "$ENABLE_DEBUG_LOGGING" = true ]; then
+        ssh-add -l | awk '{print " ‎ ‎ -‎ "substr($0, 88);}'
+    fi
+
 }
 
 # check for running ssh-agent with proper $SSH_AGENT_PID
