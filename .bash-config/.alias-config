@@ -257,7 +257,7 @@ AC_RUN="./gradlew"
 alias run=$AC_RUN
 
 alias editor=$DEFAULT_EDITOR_COMMAND
-alias ide="$DEFAULT_IDE_COMMAND ."
+alias ide="$DEFAULT_IDE_COMMAND"
 
 AC_ALIASES="$DEFAULT_EDITOR_COMMAND ~/.bash-config/.alias-config"
 alias aka=$AC_ALIASES
