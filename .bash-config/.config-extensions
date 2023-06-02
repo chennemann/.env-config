@@ -14,6 +14,7 @@ load-extensions() {
                 . $extension
             fi
         done
+        alias extensions="cd $CONFIG_EXTENSIONS_PATH"
     fi
     shopt -u dotglob
 }
