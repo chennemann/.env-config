@@ -246,16 +246,6 @@ alias eitx=$AC_EXIT
 AC_REFRESH="source ~/.bashrc"
 alias refresh=$AC_REFRESH
 
-
-AC_BUILD="./gradlew build"
-alias build=$AC_BUILD
-
-AC_CLEAN="./gradlew clean"
-alias clean=$AC_CLEAN
-
-AC_RUN="./gradlew"
-alias run=$AC_RUN
-
 alias editor=$DEFAULT_EDITOR_COMMAND
 alias ide="$DEFAULT_IDE_COMMAND"
 
