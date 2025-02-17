@@ -110,10 +110,104 @@ mdev()
 	git checkout develop && git pull && git checkout $x && git merge develop
 }
 
+_git_branch_completion() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local branches=$(git branch --format='%(refname:short)')
+    
+    # If the input is numeric, search for branches containing that number
+    if [[ $cur =~ ^[0-9]+$ ]]; then
+        # Look for the number surrounded by non-digits (using word boundaries)
+        COMPREPLY=($(echo "$branches" | grep -i "\b$cur\b"))
+    else
+        COMPREPLY=($(echo "$branches" | grep -i "$cur"))
+    fi
+}
 
-AC_CHECKOUT="git checkout"
-alias co=$AC_CHECKOUT
-__git_complete co _git_checkout
+git_checkout_smart() {
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        # If argument is a number, search for matching branch using word boundaries
+        branch=$(git branch --format='%(refname:short)' | grep -i "\b$1\b")
+        if [ $(echo "$branch" | wc -l) -eq 1 ]; then
+            git checkout $branch
+        else
+            echo "Error: Multiple or no branches found matching ticket number $1"
+            echo "Matching branches:"
+            echo "$branch"
+            return 1
+        fi
+    else
+        # Otherwise, perform normal checkout
+        git checkout "$@"
+    fi
+}
+
+# Create the alias
+alias co='git_checkout_smart'
+
+# Register the completion function
+complete -F _git_branch_completion co
+
+
+
+_git_branch_completion_with_remote() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    # Get both local and remote branches, strip 'remotes/origin/' prefix
+    local branches=$(git branch --format='%(refname:short)' && git branch -r --format='%(refname:short)' | sed 's/^origin\///')
+
+    # If the input is numeric, search for branches containing that number
+    if [[ $cur =~ ^[0-9]+$ ]]; then
+        COMPREPLY=($(echo "$branches" | grep -i "\b$cur\b"))
+    else
+        COMPREPLY=($(echo "$branches" | grep -i "$cur"))
+    fi
+}
+
+git_checkout_smart_with_fetch() {
+    # First fetch from remote
+    git fetch origin
+
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        # Check both local and remote branches
+        local_branch=$(git branch --format='%(refname:short)' | grep -i "\b$1\b")
+        remote_branch=$(git branch -r --format='%(refname:short)' | grep -i "\b$1\b" | sed 's/^origin\///')
+
+        # Combine local and remote branches, remove duplicates
+        branch=$(echo -e "$local_branch\n$remote_branch" | sort -u | grep .)
+
+        if [ $(echo "$branch" | wc -l) -eq 1 ]; then
+            if git show-ref --verify --quiet "refs/heads/$branch"; then
+                # Branch exists locally
+                git checkout $branch
+            else
+                # Branch only exists in remote
+                git checkout -t origin/$branch
+            fi
+        else
+            echo "Error: Multiple or no branches found matching ticket number $1"
+            echo "Matching branches:"
+            echo "$branch"
+            return 1
+        fi
+    else
+        # Check if the branch exists remotely but not locally
+        if ! git show-ref --verify --quiet "refs/heads/$1" && git show-ref --verify --quiet "refs/remotes/origin/$1"; then
+            git checkout -t origin/$1
+        else
+            git checkout "$@"
+        fi
+    fi
+}
+
+# Create the alias
+alias cof='git_checkout_smart_with_fetch'
+
+# Register the completion function
+complete -F _git_branch_completion_with_remote cof
+
+
+
+
+
 
 
 alias com="git checkout master"
@@ -137,6 +231,10 @@ AC_COMMIT="git commit"
 alias c=$AC_COMMIT
 alias comit=$AC_COMMIT
 alias commit=$AC_COMMIT
+
+
+AC_ADD_AMEND_COMMIT="git add . && git commit --amend"
+alias amend=$AC_ADD_AMEND_COMMIT
 
 
 AC_COMMIT_WITH_MESSAGE="git commit -m"

@@ -71,7 +71,18 @@ export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.ma
 # Make sure new commands are added to the history
 PROMPT_COMMAND='history -n'
 
+# Enable starship as the prompt
+export PATH=$PATH:"~/.tools/starship-prompt/bin"
+export STARSHIP_CONFIG=~/.tools/starship-prompt/starship.toml
+eval "$(starship init bash)"
+
 
 debug-log ""
 debug-log ""
 debug-log "!!! Logging is Enabled < Call 'toggle-logging' to disable !!!"
+
+#eval "$(fzf --bash)"
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
